@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\vinuk\\Documents\\Github\\PUSL2019-Information-Management-and-Retrieval-Year-2-Semester-1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{754B0AA5-D8D6-413E-A0F7-E4996F4F0334}|NewProjectIMR\\NewProjectIMR.csproj|C:\\Users\\vinuk\\Documents\\Github\\PUSL2019-Information-Management-and-Retrieval-Year-2-Semester-1\\newprojectimr\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{754B0AA5-D8D6-413E-A0F7-E4996F4F0334}|NewProjectIMR\\NewProjectIMR.csproj|solutionrelative:newprojectimr\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{754B0AA5-D8D6-413E-A0F7-E4996F4F0334}|NewProjectIMR\\NewProjectIMR.csproj|c:\\users\\vinuk\\documents\\github\\pusl2019-information-management-and-retrieval-year-2-semester-1\\newprojectimr\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{754B0AA5-D8D6-413E-A0F7-E4996F4F0334}|NewProjectIMR\\NewProjectIMR.csproj|solutionrelative:newprojectimr\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{754B0AA5-D8D6-413E-A0F7-E4996F4F0334}|NewProjectIMR\\NewProjectIMR.csproj|C:\\Users\\vinuk\\Documents\\Github\\PUSL2019-Information-Management-and-Retrieval-Year-2-Semester-1\\newprojectimr\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{754B0AA5-D8D6-413E-A0F7-E4996F4F0334}|NewProjectIMR\\NewProjectIMR.csproj|solutionrelative:newprojectimr\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{754B0AA5-D8D6-413E-A0F7-E4996F4F0334}|NewProjectIMR\\NewProjectIMR.csproj|C:\\Users\\vinuk\\Documents\\Github\\PUSL2019-Information-Management-and-Retrieval-Year-2-Semester-1\\newprojectimr\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{754B0AA5-D8D6-413E-A0F7-E4996F4F0334}|NewProjectIMR\\NewProjectIMR.csproj|solutionrelative:newprojectimr\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,31 +29,19 @@
               "ToolTip": "C:\\Users\\vinuk\\Documents\\Github\\PUSL2019-Information-Management-and-Retrieval-Year-2-Semester-1\\NewProjectIMR\\Form1.cs [Design]",
               "RelativeToolTip": "NewProjectIMR\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-30T16:39:14.185Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-12-30T16:39:14.185Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "login.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\vinuk\\Documents\\Github\\PUSL2019-Information-Management-and-Retrieval-Year-2-Semester-1\\NewProjectIMR\\login.cs",
-              "RelativeDocumentMoniker": "NewProjectIMR\\login.cs",
-              "ToolTip": "C:\\Users\\vinuk\\Documents\\Github\\PUSL2019-Information-Management-and-Retrieval-Year-2-Semester-1\\NewProjectIMR\\login.cs [Design]",
-              "RelativeToolTip": "NewProjectIMR\\login.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-30T16:38:45.929Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "customer.cs [Design]",
               "DocumentMoniker": "C:\\Users\\vinuk\\Documents\\Github\\PUSL2019-Information-Management-and-Retrieval-Year-2-Semester-1\\NewProjectIMR\\customer.cs",
               "RelativeDocumentMoniker": "NewProjectIMR\\customer.cs",
               "ToolTip": "C:\\Users\\vinuk\\Documents\\Github\\PUSL2019-Information-Management-and-Retrieval-Year-2-Semester-1\\NewProjectIMR\\customer.cs [Design]",
               "RelativeToolTip": "NewProjectIMR\\customer.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T10:15:50.735Z"
+              "WhenOpened": "2024-12-26T10:15:50.735Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
