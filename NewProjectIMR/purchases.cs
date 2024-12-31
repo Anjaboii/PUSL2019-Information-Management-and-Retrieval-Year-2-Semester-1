@@ -100,6 +100,7 @@ namespace NewProjectIMR
                         .Select(row => $"{row["ProductName"]} (Qty: {row["Quantity"]})"));
 
                     // Insert sales record and retrieve the generated OrderID
+
                     string query = @"INSERT INTO sales (Products, TotalBillAmount, DiscountPercentage, DiscountAmount, LastAmount) 
                              OUTPUT INSERTED.OrderID 
                              VALUES (@Products, @TotalBillAmount, @DiscountPercentage, @DiscountAmount, @LastAmount)";
@@ -449,6 +450,11 @@ namespace NewProjectIMR
         }
 
         private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
