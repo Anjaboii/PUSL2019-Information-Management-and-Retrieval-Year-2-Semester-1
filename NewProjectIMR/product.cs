@@ -89,6 +89,7 @@ namespace NewProjectIMR
                 textBox4.Text = row.Cells["Quantity"].Value.ToString();
                 textBox2.Text = row.Cells["Size"].Value.ToString();
 
+                // Store ProductID in Tag for updates
                 textBox4.Tag = row.Cells["ProductID"].Value;
 
                 textBox1.Enabled = false;
@@ -97,6 +98,7 @@ namespace NewProjectIMR
                 textBox4.Enabled = false;
             }
         }
+
 
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -119,11 +121,22 @@ namespace NewProjectIMR
                 return;
             }
 
-            // Check if we are adding a new product or updating an existing one
-            if (textBox1.Tag == null) // If adding a new product
+            // Check if the quantity is greater than or equal to 1000
+            if (quantity >= 1000)
             {
-                string query = "INSERT INTO Product (ProductName, Price, Size, Quantity) " +
-                               "VALUES (@ProductName, @Price, @Size, @Quantity)";
+                DialogResult result = MessageBox.Show("ALERT: You are adding a quantity of 1000 or more. Do you want to continue?",
+                    "Large Quantity Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.No)
+                {
+                    return; // Abort the insertion if user clicks No
+                }
+            }
+
+            // Determine if this is an update or insert
+            if (textBox4.Tag == null) // Adding a new product
+            {
+                string query = "INSERT INTO Product (ProductName, Price, Size, Quantity) VALUES (@ProductName, @Price, @Size, @Quantity)";
 
                 try
                 {
@@ -146,11 +159,15 @@ namespace NewProjectIMR
                     MessageBox.Show($"Error adding product: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else // If updating an existing product
+            else // Updating an existing product
             {
-                int productId = Convert.ToInt32(textBox1.Tag); // Assuming ProductID is stored in textBox1.Tag
-                string query = "UPDATE Product SET ProductName = @ProductName, Price = @Price, " +
-                               "Size = @Size, Quantity = @Quantity WHERE ProductID = @ProductID";
+                if (!int.TryParse(textBox4.Tag.ToString(), out int productId))
+                {
+                    MessageBox.Show("No valid product selected for update.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string query = "UPDATE Product SET ProductName = @ProductName, Price = @Price, Size = @Size, Quantity = @Quantity WHERE ProductID = @ProductID";
 
                 try
                 {
@@ -177,6 +194,8 @@ namespace NewProjectIMR
 
             LoadProductsData(); // Reload the product data
         }
+
+
 
 
 

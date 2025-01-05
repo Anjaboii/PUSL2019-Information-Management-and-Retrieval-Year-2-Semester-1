@@ -19,15 +19,31 @@ namespace NewProjectIMR
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
-            form1.Show();
+            // Define the allowed username and password
+            string allowedUsername = "admin";
+            string allowedPassword = "1234";
 
+            // Get the entered username and password
+            string enteredUsername = textBox1.Text;
+            string enteredPassword = textBox2.Text;
 
-            this.Hide();
+            // Validate the credentials
+            if (enteredUsername == allowedUsername && enteredPassword == allowedPassword)
+            {
+                // Hide the login form
+                this.Hide();
 
-
-            form1.FormClosed += (s, args) => this.Close();
+                // Open Form1
+                Form1 form1 = new Form1();
+                form1.ShowDialog();
+            }
+            else
+            {
+                // Show an error message if the credentials are invalid
+                MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -35,6 +51,16 @@ namespace NewProjectIMR
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }

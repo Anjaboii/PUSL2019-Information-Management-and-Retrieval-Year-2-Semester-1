@@ -93,10 +93,19 @@ namespace NewProjectIMR
             int amount;
             string size = textBox3.Text;
 
-            if (string.IsNullOrEmpty(supplierName) || string.IsNullOrEmpty(productName) || !int.TryParse(textBox4.Text, out amount) || string.IsNullOrEmpty(size))
+            if (string.IsNullOrEmpty(supplierName) || string.IsNullOrEmpty(productName) ||
+                !int.TryParse(textBox4.Text, out amount) || string.IsNullOrEmpty(size))
             {
                 MessageBox.Show("Please fill all fields correctly.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            // Check if Amount exceeds 100,000
+            if (amount > 100000)
+            {
+                MessageBox.Show("ALERT: The amount exceeds 100,000. Please verify the details.",
+                    "High Amount Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Abort insertion or update
             }
 
             if (textBox1.Tag == null) // Adding a new supplier
@@ -159,6 +168,7 @@ namespace NewProjectIMR
 
             LoadSupplierData();
         }
+
 
         private void button4_Click(object sender, EventArgs e)
         {

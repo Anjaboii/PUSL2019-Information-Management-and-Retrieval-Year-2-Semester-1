@@ -130,16 +130,13 @@ namespace NewProjectIMR
 
         private void button7_Click(object sender, EventArgs e)
         {
-            {
-                login login = new login();
-                login.Show();
+            // Close the current form
+            this.Close();
 
-
-                this.Hide();
-
-
-                login.FormClosed += (s, args) => this.Close();
-            }
+            // Show the login form
+            login loginForm = new login();
+            loginForm.Show();
         }
+
     }
 }
