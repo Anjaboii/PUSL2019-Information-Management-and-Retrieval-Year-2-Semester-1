@@ -28,6 +28,8 @@ namespace NewProjectIMR
         private void employee_Load(object sender, EventArgs e)
         {
             LoadEmployeeData();
+            PopulateComboBox();
+
         }
 
         private void LoadEmployeeData()
@@ -237,6 +239,111 @@ namespace NewProjectIMR
                 textBox2.Enabled = true;
                 textBox3.Enabled = true;
                 textBox4.Enabled = true;
+            }
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Get NIC from the search bar
+            string nicInput = textBox5.Text;
+
+            if (!string.IsNullOrWhiteSpace(nicInput) && nicInput.All(char.IsDigit))
+            {
+                long nic = long.Parse(nicInput);
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand("FindEmployeeByNIC", connection))
+                        {
+                            command.CommandType = CommandType.StoredProcedure;
+                            command.Parameters.AddWithValue("@NIC", nic);
+
+                            // Execute the command and populate the DataGridView
+                            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                            {
+                                DataTable table = new DataTable();
+                                adapter.Fill(table);
+
+                                if (table.Rows.Count > 0)
+                                {
+                                    dataGridView1.DataSource = table;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No employee found with the provided NIC.", "Search Result");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred: {ex.Message}", "Error");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid NIC (numeric only).", "Invalid Input");
+            }
+        }
+
+        private void PopulateComboBox()
+        {
+            comboBox1.Items.AddRange(new string[] { "Manager", "Vice Manager", "IT Head", "Supplier Manager", "Cashier" });
+        }
+
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedPosition = comboBox1.SelectedItem.ToString();
+
+            if (!string.IsNullOrEmpty(selectedPosition))
+            {
+                FilterEmployeesByPosition(selectedPosition);
+            }
+        }
+
+        private void FilterEmployeesByPosition(string position)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("GetEmployeesByPosition", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@Position", position);
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+
+                        dataGridView1.DataSource = table;
+
+                        // Customize DataGridView appearance (optional)
+                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+                        dataGridView1.Columns["EmployeeID"].HeaderText = "ID";
+                        dataGridView1.Columns["EmployeeName"].HeaderText = "Employee Name";
+                        dataGridView1.Columns["Position"].HeaderText = "Position";
+                        dataGridView1.Columns["ContactNo"].HeaderText = "ContactNo";
+                        dataGridView1.Columns["NIC"].HeaderText = "NIC";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error filtering employees: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
